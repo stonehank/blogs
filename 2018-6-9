@@ -1,0 +1,60 @@
+### es6箭头函数和this
+
+箭头函数()=>{},没有自己的this指针,this继承词法作用域的this
+
+function(){},有自己的this指针,this指向调用时的对象
+
+例子：
+```js
+a="windowScope"
+let obj1={
+  a:1,
+  // 词法作用域是window
+  show:()=>{console.log('obj1:',this.a)}
+};
+
+let obj2={
+  a:2,
+  // this为调用时确定的对象
+  show:function(){console.log('obj2:',this.a)}
+};
+
+let obj3 = {
+  a:3,
+  // ②找到function有this指针,this是调用时确定
+  show :function(){
+    // ①词法作用域就是父级function
+    setTimeout(()=>{ console.log('obj3:',this.a) }, 100);
+  }
+};
+
+let obj4={
+  a:4,
+  // ②无this，继续向上找，词法作用域是window
+  show :()=>{
+    // ①词法作用域是父级()=>{}
+    setTimeout(() => { console.log('obj4:',this.a) }, 100);
+  }
+};
+
+obj1.show(); // windowScope
+obj2.show(); // 2
+obj3.show(); // 3
+obj4.show(); // windowScope
+```
+继续：
+
+```js
+let obj5={
+  a:1,
+  show:{
+    a:2,
+    // 还是window，因为向上并未能找到带有this的词法作用域
+    show:()=>{console.log('obj5:',this.a)}
+  }
+};
+
+obj5.show.show() // windowScope
+
+```
+
