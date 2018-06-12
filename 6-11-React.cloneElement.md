@@ -11,8 +11,8 @@ React.cloneElement(
 
 必须是一个存在的React组件或者原生DOM，以下都可以
 
-```React.cloneElement(<div />)```
-```React.cloneElement(<Child />)```
+`React.cloneElement(<div />)`
+`React.cloneElement(<Child />)`
 
 但我们通常发现用的最多的是搭配React.Children.map和this.props.children使用，如下：
 ```jsx

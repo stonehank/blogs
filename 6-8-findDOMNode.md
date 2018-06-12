@@ -11,7 +11,7 @@
 
 例如：
 
-获取的第一个子组件的DOM：```<div>1</div>```
+获取的第一个子组件的DOM：`<div>1</div>`
 
 ```jsx
 <Fragment>
@@ -20,7 +20,7 @@
 </Fragment>
 ```
 
-获取的第一个子组件的DOM：```<div><div>1</div><div>2</div></div>```
+获取的第一个子组件的DOM：`<div><div>1</div><div>2</div></div>`
 
 ```jsx
 <Fragment>
