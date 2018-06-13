@@ -77,7 +77,7 @@ const users = (state = {}, action) => {
 };
 ```
 
-而这里则是编写epic，`action$`入，`action$`出，这两个action$流不能是同一个，编写完成后，通过`combineEpics`，
+而这里则是编写epic，`action$`入，`action$`出，这两个action$流不能是同一个，编写完成后，通过`combineEpics`合并，
 再通过`createEpicMiddleware`创建，最后通过`applyMiddleware`加入到`createStore`中
 
 这是一个epic:
