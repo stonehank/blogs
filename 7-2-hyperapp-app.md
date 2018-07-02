@@ -9,4 +9,4 @@ patch是hyperapp进行节点更新的核心，主要步骤：
 * 返回更新的element
 
 思维导图：
-<a href="hyperapp-patch导图.png">![](hyperapp-patch导图lit.png)</a>
+![](hyperapp-patch导图.png)
