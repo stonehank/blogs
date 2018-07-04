@@ -6,4 +6,4 @@
 
 思维导图：
 
-![](hyperapp导图.jpg)
+![](./img/hyperapp导图.jpg)
