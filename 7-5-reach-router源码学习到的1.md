@@ -15,7 +15,10 @@
 
 ## createContext(defaultValue)
 
-官方解释：
+官方(英文)：
+> If there is no Provider for this context above, the value argument will be equal to the defaultValue that was passed to createContext().
+
+中文文档：
 >如果上层的组件树没有一个匹配的 Provider，而此时你需要渲染一个 Consumer 组件，那么你可以用到 defaultValue 。这有助于在不封装它们的情况下对组件进行测试。
 
 源码中这么用的
