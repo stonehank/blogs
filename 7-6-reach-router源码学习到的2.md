@@ -30,13 +30,5 @@ let ROOT_POINTS = 1;        // 根路径
 
 因此上面的问题会优先匹配`doc/artical`，第二有优先度为`doc/:section`
 
-## 正则 exec和match
-
-* 都是返回数组，包括小括号内部
-* 非全局 一致
-* 全局 match有效(匹配多个值) exec无效(匹配单个值)
-
-
-
 
 
