@@ -74,3 +74,5 @@ console.log(selectState(mockStore)===selectState(mockStore))
 注意：比较参数是建立在我们编写*纯函数*的基础上，如果内部不是纯函数，但参数相同，也会返回缓存值，就很可能会造成意外的bug
 
 [详细代码](https://gist.github.com/stonehank/c5de2a4318ee9954503770047c998c7b)
+
+[更多关于reselect的学习](https://github.com/stonehank/sourcecode-analysis/blob/master/source-code.reselect/README.md)

@@ -1,6 +1,6 @@
 ## hyperapp-patch
 
-[完整源码说明注释](https://github.com/stonehank/source-code.hyperapp)
+[完整源码说明注释](https://github.com/stonehank/sourcecode-analysis/blob/master/source-code.hyperapp/README.md)
 
 patch是hyperapp进行节点更新的核心，主要步骤：
 * 先判断node节点
