@@ -1,4 +1,4 @@
-React@16.4
+## React@16.4 getDerivedStateFromProps
 
 `getDerivedStateFromProps`内部不可以有副作用，因为现在是无论是state改变还是props改变，
 都会执行它。
