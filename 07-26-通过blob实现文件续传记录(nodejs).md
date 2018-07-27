@@ -1,6 +1,6 @@
 ## 一个可暂停分段上传的例子
 
-[代码位置]()
+[代码位置](https://gist.github.com/stonehank/5d3dea234ac6bc200bdef9c181c0a645)
 _______
 
 要点：
@@ -75,3 +75,7 @@ _______
          })
     })
     ```
+5. xhr定义`responseType='json'`，会自动将符合格式的回应值转换成json，
+   但不能使用`responseText`接收，使用`response`读取json
+   
+   另外还有`responseXML`读取document
