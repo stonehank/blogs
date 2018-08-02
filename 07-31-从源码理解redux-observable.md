@@ -1,5 +1,5 @@
 
-阅读前提：
+## 阅读前提：
 1. 有rxjs基础，对`Observable`, `Subject`,`pipe`和一些操作符(例如`filter`,`map`,`merge`,`mergeMap`)执行流程有基本了解，最起码遇到不清楚有去查阅的动力
 2. 比较熟悉`redux`中间件的写法，否则像`createEpicMiddleware.js`中的这一段会搞不清楚
     ```
@@ -8,8 +8,9 @@
     ```
     关于redux也可以查阅我之前写的[redux源码注释](https://github.com/stonehank/sourcecode-analysis/tree/master/source-code.redux)
     
--------------
-正式开始，先看目录结构
+
+## 目录结构
+
 ```
 src/
 ├──utils/
@@ -23,18 +24,13 @@ src/
 ```
 
 
-```
-3. lift函数作用是什么(在ActionObservable内部出现)
+## 源码分析
 
-```
+index.js：公开接口，略
 
-接下来一个一个的说：
+-----
 
--------
-* index.js：公开接口，略
--------------
-
-* ActionObservable.js
+### ActionObservable.js
 
 继承了`Observable`类
 ```js
@@ -68,7 +64,7 @@ return observable;
 可以看到改动就在于原来的用`new Observable`，这里使用`new ActionObservable()`，其他都是一模一样，
 封装成`ActionObservable`类的意义，统一类型，方便后面的链式绑定
 
-`lift`在`pipe`的时候会用到，其实这都是rxjs源码调用的方式
+`lift`在`pipe`的时候会用到，其实这都是rxjs源码调用的方式()
 ```js
 lift(operator) {
  const observable = new ActionsObservable(this);
@@ -84,8 +80,9 @@ lift(operator) {
 ```
 
 ----------------
-* combineEpics.js
+### combineEpics.js
 
+将多个epic合并成1个epic，就是分别执行每一个epic(绑定用户定义的操作符)，然后将每一个结果的流用merge合并
 ```js
 // 引入merge
 import { merge } from 'rxjs';
@@ -94,12 +91,16 @@ import { merge } from 'rxjs';
   Merges all epics into a single one.
  */
 export const combineEpics = (...epics) => {
+  // 通过merge操作符合并多个epic执行后的output$流
+  // ...epics是多个epic
   const merger = (...args) => merge(
     ...epics.map(epic => {
+      // 执行每一个epic，确保有返回值，此处执行就是绑定了用户自定义操作符的步骤
       const output$ = epic(...args);
       if (!output$) {
         throw new TypeError(`combineEpics: one of the provided Epics "${epic.name || '<anonymous>'}" does not return a stream. Double check you\'re not missing a return statement!`);
       }
+      // 返回结果，最后进行merge合并
       return output$;
     })
   );
@@ -117,7 +118,7 @@ export const combineEpics = (...epics) => {
 };
 ```
 --------------
-* createEpicMiddleware.js
+### createEpicMiddleware.js
 
 一、提示目前参数不在接受`rootEpic`，而是使用`epicMiddleware.run(rootEpic)`，这里`epicMiddleware`就是执行`createEpicMiddleware`的返回值
 ```js
@@ -233,7 +234,7 @@ return epicMiddleware;
 }
 ```
 ------------------
-* operators.js
+### operators.js
 
 定义了`ofType`，其实就是一个filter
 ```js
@@ -262,7 +263,7 @@ export const ofType = (...keys) => (source) => source.pipe(
 );
 ```
 ------------------
-* StateObservable.js
+### StateObservable.js
 
 继承`Observable`，定义了一个保存状态的类，里面改写了父类(`Observable`)的`_subscribe`(作用不太清楚)，
 并且定义了一个保存当前数据状态的函数，通过stateSubject(也就是createEpicMiddleware里面的`stateSubject$`)的`subscribe`绑定到底层
@@ -294,5 +295,6 @@ export class StateObservable extends Observable {
  }
 ```
 
-源码就到此分析完了，看到这里可能还是一头雾水，知道是什么也只是概念上的知道，对整个流程还是没有头绪，
-接着，我将对几个关键流程进行导图分析
+源码就到此分析完了，看到这里可能还是一头雾水，知道是什么也只是概念上的知道，对整个流程还是没有头绪
+
+[查看更多关于流程分析](https://github.com/stonehank/sourcecode-analysis/blob/master/source-code.redux-observable/README.md)
