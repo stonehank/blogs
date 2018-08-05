@@ -1,3 +1,5 @@
+使用4种方式：props传递，父组件公用，hoc，render-prop
+
 定义需求，cur符合auth才能查看组件内容，否则进入NotAccess
 ```
 const cur = "a";
@@ -10,8 +12,8 @@ const NotAccess = () => <div>Not Access</div>;
 ```
 
 ## props传递
-代码量大，非常不灵活，重复巨大
-```jsx
+
+```jsx harmony
 const Component1 = props => {
   const { comId } = props;
   const isValid = auth[comId].includes(cur);
@@ -44,7 +46,7 @@ class App extends React.Component {
 
 
 ## 组件复用+Children
-代码量少很多，无重复，但欠缺灵活性
+
 ```jsx harmony
 const Component1 = () => <div>Component1</div>;
 const Component2 = () => <div>Component2</div>;
@@ -78,30 +80,31 @@ class App extends React.Component {
 [在线例子](https://codesandbox.io/s/zvo23629m)
 
 ## 高阶组件 HOC
-代码量少，逻辑清晰，灵活度高
+
 ```jsx harmony
-const Component1 = () => <div>Component1</div>
-const Component2 = () => <div>Component2</div>
-const Component3 = () => <div>Component3</div>
+const Component1 = () => <div>Component1</div>;
+const Component2 = () => <div>Component2</div>;
+const Component3 = () => <div>Component3</div>;
 
-const Auth = (Component,comId) => {
-  let isValid = auth[comId].includes(cur)
-  return (Other) => {
-    return isValid ? <Component /> : <Other /> || null
-  }
-}
+const Auth = (Component, comId) => {
+  return class extends React.Component {
+    render() {
+      const isValid = auth[comId].includes(cur);
+      return isValid ? <Component /> : <NotAccess />;
+    }
+  };
+};
 
-let AuthCom1 = Auth(Component1,'com1')
-let AuthCom2 = Auth(Component2, 'com2')
-let AuthCom3 = Auth(Component3, 'com3')
-
+let AuthCom1 = Auth(Component1, "com1");
+let AuthCom2 = Auth(Component2, "com2");
+let AuthCom3 = Auth(Component3, "com3");
 class App extends React.Component {
   render() {
     return (
       <div>
-        {AuthCom1(NotAccess)}
-        {AuthCom2(NotAccess)}
-        {AuthCom3(NotAccess)}
+        <AuthCom1 />
+        <AuthCom2 />
+        <AuthCom3 />
       </div>
     );
   }
@@ -109,3 +112,39 @@ class App extends React.Component {
 ```
 
 [在线例子](https://codesandbox.io/s/9oz40znmvy)
+
+
+## render-prop
+
+App组件可以轻松的获取任何子组件里的参数
+```jsx harmony
+const Component1 = () => <div>Component1</div>;
+const Component2 = () => <div>Component2</div>;
+const Component3 = () => <div>Component3</div>;
+
+const AuthCom = props => {
+  const validEles = React.Children.map(props.children, e => {
+    const { comId } = e.props;
+    return auth[comId].includes(cur) ? e : <NotAccess />;
+  });
+  return props.render(validEles);
+};
+
+class App extends React.Component {
+  render() {
+    return (
+      <AuthCom
+        render={validEles => {
+          return validEles.map(e => e);
+        }}
+      >
+        <Component1 comId="com1" />
+        <Component2 comId="com2" />
+        <Component3 comId="com3" />
+      </AuthCom>
+    );
+  }
+}
+```
+
+[在线例子](https://codesandbox.io/s/l27ljm781q)
