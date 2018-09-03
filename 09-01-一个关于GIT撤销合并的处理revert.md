@@ -32,3 +32,7 @@ init -> v1 -> v2 -> v3 -- faulty merge -> v4  (master) ->revert merge ->v5
 2. 再次revert到之前revert的部分，`git revert "revert merge"`,然后会发现d1和d2又回来了(最初的有bug的版本)，再`git merge dev`将修正的版本合并进来，处理冲突即可
 
 >另： 第2步反过来也可，先`git merge dev`，将改动过的合并进来，再`git revert "revert merge"`，处理冲突
+
+---------------
+
+>自己注：git-test目录中，目前正在v5，dev的dev-1，dev-2是被revert的，dev-2做了修改，可以使用第2或者第3种方法
