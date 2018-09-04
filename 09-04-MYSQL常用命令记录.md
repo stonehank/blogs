@@ -1,0 +1,94 @@
+* 添加row
+
+`INSERT  INTO library VALUES (1,'javascript',8);`
+
+* 条件排序order by
+
+`SELECT *  FROM movies WHERE release_year>1999 ORDER BY  release_year;`
+
+* SUM
+
+`SELECT SUM(minutes) FROM todo_list;`
+
+* 嵌套in
+
+`SELECT title FROM songs WHERE artist IN (
+    SELECT name FROM artists WHERE genre="Pop");`
+
+* like
+```
+SELECT * FROM exercise_logs
+ WHERE type IN (
+    SELECT type FROM drs_favorites 
+    WHERE reason LIKE "%cardiovascular%"
+    );
+```
+* 多重条件选择case...when..then
+```
+SELECT Count(*),
+    CASE 
+        WHEN number_grade>90 THEN "A"
+        WHEN number_grade>80 THEN "B"
+        WHEN number_grade>70 THEN "C"
+        ELSE "F"
+    END AS "letter_grade"
+    FROM student_grades 
+    GROUP BY letter_grade;
+```
+* as别名 group by...having
+```
+SELECT author ,AVG(words) AS avg_words FROM books 
+    GROUP BY author
+    HAVING avg_words >150000;
+
+```
+
+* and且
+```
+SELECT persons.name,hobbies.name FROM persons
+JOIN hobbies
+WHERE persons.name='Bobby McBobbyFace'
+AND persons.id=hobbies.person_id;
+```
+* left out join...on合并表并且左边全部合并显示
+```
+SELECT customers.name, customers.email, SUM(orders.price) AS total_price
+FROM customers 
+LEFT OUTER JOIN orders
+ON orders.customer_id=customers.id
+GROUP BY customers.id
+ORDER BY total_price desc;
+```
+* 合并当前表 left outer join xxx 别名
+```
+/* join itself */
+SELECT movies.title, sequel.title AS sequel_title
+FROM movies
+LEFT OUTER JOIN movies sequel
+ON movies.sequel_id=sequel.id;
+```
+* 多重合并
+```
+/* multiple joins*/
+SELECT a.fullname, b.fullname FROM friends
+JOIN persons a
+ON a.id=friends.person1_id
+JOIN persons b
+ON b.id=friends.person2_id;
+```
+* 更新内容update
+```
+UPDATE documents SET author='Jackie Draper'
+WHERE author='Jackie Paper';
+```
+* 删除内容
+
+`DELETE FROM documents WHERE title="Things I'm Afraid Of";`
+
+* 增加表的列，改变表结构
+
+`ALTER TABLE clothes ADD COLUMN price INTEGER;`
+
+* 变更表名
+
+`ALTER TABLE travel_spots RENAME TO places_to_live;`
