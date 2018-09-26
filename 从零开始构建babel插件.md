@@ -7,14 +7,9 @@
 
 ## 问题
 
-但使用的同时，也发现了3个问题，**前2个是致命的**。
+但使用的同时，也发现了3个问题，**第1个是致命的**。
 
-1. 动态编译。
-
-    必须要等到程序开始运行后才能工作，这意味着要将整个`esprima`库放入到项目中，除非你的项目中已经有依赖
-    `esprima`，否则为这个功能带来的体积开销是不可容忍的。
-
-2. babel编译。
+1. babel编译。
 
     当我们很爽的写着ES6函数的时候，`babel`会将你的参数格式彻底打乱。
     
@@ -33,6 +28,11 @@
       console.log(a + b);
     };
     ```
+
+2. 动态编译。
+
+    必须要等到程序开始运行后才能工作，这意味着要将整个`esprima`库放入到项目中，除非你的项目中已经有依赖
+    `esprima`，否则为这个功能会带来额外的体积开销。
 
 3. 性能。
 
@@ -62,7 +62,7 @@ var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 2;
 var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
 ```
 
-其中一条的`AST`如下，具体可以这里尝试，[https://astexplorer.net/](https://astexplorer.net/)
+其中一条`var a=...`的`AST`如下，具体可以这里尝试，[https://astexplorer.net/](https://astexplorer.net/)
 
 ![./img/AST-sample.png](./img/AST-sample.png)
 
@@ -140,7 +140,7 @@ export default declare(api => {
     
 2. 创建方式有多种，分为2类，使用工具创建和不使用工具创建。
 
-    当然，最开始我是不使用工具的，当时写一个`Object`里面的`key`是字符串，`value`是数组(有可能多层嵌套)，
+    当然，最开始我是不使用工具的，当时写一个对象结构里面的`key`属性是字符串，`value`属性是数组(并且有的有可能多层嵌套)，
     然后开始一个个节点对象创建，递归，遍历，写啊写，写完执行，失败，好吧，一层一层的剥开调试...这就是写bug的正确方式。
     
     好吧，`ctrl+a -> del`，这里只讲我使用的方式。
@@ -149,7 +149,7 @@ export default declare(api => {
     
     * `template`
     
-    用来创建模板的，能少些很多东西，例如：`template("let x=SOMEVALUE")`
+    用来创建模板的，能少写很多东西，例如：`template("let x=SOMEVALUE")`
     这里只需要在后面传入`SOMEVALUE(要大写)`的值，就会自动创建出`let x=xxxx`这个表达式的`AST`对象。
     
     * `types`
@@ -166,4 +166,8 @@ export default declare(api => {
     
     简洁高效。
     
-    
+
+## 总结
+
+关于AST的操作还有很多，例如删除，替换...具体可以看`bable-handbook`，这篇文章说的修改和增加，内容不深，主要是让我们对AST
+的结构，并且是如何通过它去创建babel插件能有一个概念，接下来的更多发掘就靠自己的探索了。
