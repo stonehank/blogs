@@ -1,5 +1,3 @@
-## redux源码中一个小技巧
-
 先上源码：
 ```js
 export default function applyMiddleware(...middlewares) {

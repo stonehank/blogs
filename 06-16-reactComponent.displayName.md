@@ -1,6 +1,4 @@
-## displayName:定义调试时的组件name
-
-例如：
+`displayName`定义调试时的组件name，例如：
 ```jsx
  function withHOC(WrapComponent) {
    // 此处未定义名称或者希望动态定义名称

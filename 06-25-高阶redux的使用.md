@@ -1,4 +1,4 @@
-## Redux的复用
+###3 Redux的复用
 
 因为每一次dispatch都是遍历所有reducer寻找type，因此每一个action的type不能一致，
 当需要复用reducer时，可以使用prefix
@@ -12,7 +12,7 @@ function generateReducer(prefix,state){
 }
 ```
 
-## Redux的增强
+###3 Redux的增强
 
 增强redux通过3点进行
 * 处理额外的action

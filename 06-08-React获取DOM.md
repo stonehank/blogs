@@ -1,5 +1,3 @@
-## React获取DOM的方法简述
-
 ### createRef
 当 ref 属性在组件时，获取组件实例；当ref属性在dom时，获取dom实例
 

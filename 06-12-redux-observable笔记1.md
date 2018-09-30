@@ -1,4 +1,3 @@
-## redux-observable 学习快速笔记
 ### 一
 ```js
 const pingEpic = action$ =>

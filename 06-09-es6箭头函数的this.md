@@ -1,5 +1,3 @@
-### es6箭头函数和this
-
 箭头函数()=>{},没有自己的this指针,this为上一层的的this指针
 
 function(){},有自己的this指针,this指向调用时的对象

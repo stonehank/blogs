@@ -1,5 +1,3 @@
-## redux中的compose
-
 先上源码：
 ```js
 // 将(fun1,fun2,fun3)转换成fun1(fun2(fun3()))

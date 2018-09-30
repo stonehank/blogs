@@ -1,5 +1,3 @@
-## React.cloneElement参数
-
 ```jsx
 React.cloneElement(
   element,

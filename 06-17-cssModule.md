@@ -1,6 +1,4 @@
-## cssModule配置
-
-先进行webpack配置：
+cssModule配置，先进行webpack配置：
 ```
 // ...
 test: /\.css$/,

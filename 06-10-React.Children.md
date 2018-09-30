@@ -1,6 +1,4 @@
-## React.Children 和 this.props.children
-
-都是获取父组件的子元素(子组件)
+`React.Children`和`this.props.children`都是获取父组件的子元素(子组件)
 
 this.props.children:
 1. 1个子元素  => {Object}(React元素(组件)对象)
