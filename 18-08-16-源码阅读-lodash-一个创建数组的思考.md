@@ -1,0 +1,60 @@
+####创建数组的思考
+
+`lodash.js--->.internal-->baseClone.js`内部
+
+有一句：`const result = new array.constructor(length)`
+
+这里array是一个经过`Array.isArray(array)===true`判断的数组，
+
+这句话就是使用原数组的构造函数去创建，参数是原数组的长度。
+
+那么为什么不直接`const result = new Array(length)`
+
+因为如果我们使用了自定义构造函数，`new Array`则会将自定义方法都删除
+
+例如：
+
+一个自定义构造函数(Array),包含自定义sum和avg方法
+```js
+function CustomArray(length=0){
+  let custom=Object.create([],Array.prototype)
+  let proto=Object.getPrototypeOf(custom)
+  proto.constructor=CustomArray
+  proto.sum=function(){
+    return this.reduce((acc,cur)=>acc+cur,0)
+  }
+  proto.avg=function(){
+    return this.sum()/this.length
+  }
+  return custom
+}
+```
+验证：
+```js
+let myArray=new CustomArray()
+myArray.push(5)
+myArray.push(6)
+myArray.push(7)
+myArray.sum() // 18
+myArray.avg() // 6
+```
+使用`new array.constructor`
+```js
+const {length}=myArray
+const result = new myArray.constructor(length)
+result.push(5)
+result.push(6)
+result.push(7)
+result.sum()   // 18
+result.avg()   // 6
+```
+使用`new Array`
+```js
+const {length}=myArray
+const resultRaw = new Array(length)
+resultRaw.push(5)
+resultRaw.push(6)
+resultRaw.push(7)
+resultRaw.sum()   // 报错 not a function
+resultRaw.avg()   // 报错 not a function
+```
