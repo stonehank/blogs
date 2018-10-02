@@ -1,6 +1,6 @@
 #### ReactTransitionGroup
 
-## Transition
+#### Transition
 
 默认展示组件某个特定状态的样式，而不是创建渐变动画
 
@@ -49,7 +49,7 @@ css中设置如下：
   transition: opacity 300ms;
 }
 ```
-## TransitionGroup
+#### TransitionGroup
 
 管理一些列组件的动画，例如列表
 ```jsx
@@ -67,7 +67,7 @@ css中设置如下：
   </TransitionGroup>
 </ul>
 ```
-## 常用属性
+#### 常用属性
 
 * children
 
