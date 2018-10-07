@@ -1,10 +1,11 @@
+canvas的drawImage方法组多可以有9个参数，如下：
 ```
 void ctx.drawImage(image, dx, dy);
 void ctx.drawImage(image, dx, dy, dWidth, dHeight);
 void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
 ```
 
-第三个的参数理解：
+第三种使用的参数理解：
 * dx：用于显示的窗口位置x
 * dy：用于显示的窗口位置y
 * dWidth：用于显示的窗口宽度
