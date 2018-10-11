@@ -1,6 +1,25 @@
 ### createRef
 当 ref 属性在组件时，获取组件实例；当ref属性在dom时，获取dom实例
 
+```jsx
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.inputRef = React.createRef();
+  }
+
+  render() {
+    return <input type="text" ref={this.inputRef} />;
+  }
+
+  componentDidMount() {
+    this.inputRef.current.focus();
+  }
+}
+```
+
+
 ### findDOMNode
 
 获取findDOMNode(this)参数组件(this)的DOM（所有DOM）
