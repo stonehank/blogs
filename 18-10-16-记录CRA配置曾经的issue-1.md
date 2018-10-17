@@ -2,7 +2,7 @@
 
 下面来数一数曾经的issue和对应的解决办法。
 
-1. 关于`postcss-loader`的`ident`
+* 关于`postcss-loader`的`ident`
 
 它是一个唯一标识符，引用webpack的原话，是要求`plugins`为函数(复杂配置)的时候，必须要`ident`
 
@@ -50,4 +50,5 @@ yarn start
  
  最终还是将ident加了回去，并且注明ident是必要的，特别是引入外部css的时候。
  
+
 
