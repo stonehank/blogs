@@ -10,20 +10,21 @@ We could have also taken [2, 1], but an answer of [1, 3, 5] would be lexicograph
 
 思路：
 
-1. 因为是分割成3段，设定为left,mid,right
-2. 定义一个数组`sums`，它记录从0到`nums.length-k`上每一个对应`k`个子数组的和
+1. 因为是分割成3段，设定为left,mid,right。
+
+2. 定义一个数组`sums`，它记录从0到`nums.length-k`上每一个对应`k`个子数组的和。
     
     例如：nums:`[1,2,3,4]`,k:`2`，那么sums就是`[1+2,2+3,3+4]`
-3. 计算`left`，使`left`从左到右记录当前最大`index`
+3. 计算`left`，使`left`从左到右记录当前最大`index`。
     
-    计算`right`，使`right`从右到左记录当前最大`index`
+    计算`right`，使`right`从右到左记录当前最大`index`。
     
     这么做是因为当`left`和`right`记录好了后，就可以直接控制mid的`index`，来计算当前和。
     
     如果`mid`的起始`index`是`n`，那么当前左端范围内的最大值就是`left[n-k]`，
-    当前右端范围内的最大值就是`right[n+k]`
+    当前右端范围内的最大值就是`right[n+k]`。
     
-    如下图，假设这是一个`left`，`k`为2，当前left范围是0~8，那么这个范围内最大值一定是8这个位置
+    如下图，假设这是一个`left`，`k`为2，当前left范围是0~8，那么这个范围内最大值一定是8这个位置。
     
     注意：这里的值并不是实际值，而是对应`sums`的`index`所对应的值。
     
