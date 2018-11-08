@@ -19,8 +19,8 @@
 * focus 
 * blur
 * visibilitychange : 当页面可见状态发生变化，例如，最小化，切换tab，关闭tab等
-* freeze : 新增，当页面转为`Frozen`时触发。
-* resume : 新增，当页面离开`Frozen`并且不是关闭时触发。
+* freeze : chrome 68新增，当页面转为`Frozen`时触发。
+* resume : chrome 68新增，当页面离开`Frozen`并且不是关闭时触发。
 * pageshow 
     >`pageshow`事件在用户加载网页时触发。这时，有可能是全新的页面加载，也可能是从缓存中获取的页面。
     如果是从缓存中获取，则该事件对象的`event.persisted`属性为true，否则为false。
@@ -39,6 +39,8 @@
 `document.wasDiscarded`：判断网页是否经过`Discarded`阶段。
 
 ----------
+demo:[https://page-lifecycle.glitch.me/](https://page-lifecycle.glitch.me/)
+
 参考：
 * [Page Lifecycle API 教程](http://www.ruanyifeng.com/blog/2018/11/page_lifecycle_api.html)
 * [page lifecycle](https://github.com/WICG/page-lifecycle)
