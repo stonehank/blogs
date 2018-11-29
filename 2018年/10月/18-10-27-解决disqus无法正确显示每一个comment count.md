@@ -4,7 +4,7 @@
 
 问题是：**这个计数器并不是每一篇文章都能正确显示**，有的列表能显示2个，有的列表一个都不显示，
 
-![](./img/comment_count_fail.png)
+![](../../img/comment_count_fail.png)
 
 看了看network，不能显示的文章response是个空数组，是不是服务器获取失败呢还是没有上传到服务器呢。
 
@@ -16,11 +16,11 @@
 选择`thread`下方的`list`，设定`froum`为你的`shortname`，
 如果你的数量超过25，需要设置`limit`，我这里设置了`limit`为100
 
-![](./img/disqus_concole.png)
+![](../../img/disqus_concole.png)
 
 将结果copy到控制台上一看，才47条，我这里文章起码90篇，找到原因了，原来是服务器并未接收到许多文章的`identifier`
 
-![](./img/disque_request_first.png)
+![](../../img/disque_request_first.png)
 
 那么发生这种问题的原因和问题该如何解决呢？
 
@@ -35,11 +35,11 @@
 
 数量已经达到正常的98
 
-![](./img/disque_request_second.png)
+![](../../img/disque_request_second.png)
 
 过了几分钟，强制刷新后，再次查看，全部正常显示！
 
-![](./img/comment_count_succ.png)
+![](../../img/comment_count_succ.png)
 
 
 

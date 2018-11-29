@@ -11,7 +11,7 @@
 
 第一次构建，总大小2.76M
 
-![](./img/init.png)
+![](../../img/init.png)
 
 很显然是不行的，一个个人博客而已...
 
@@ -30,7 +30,7 @@ config = injectBabelPlugin(
 
 第二次构建，效果很好，减少了将近800K，总大小1.92M
 
-![](./img/first.png)
+![](../../img/first.png)
 
 看了看最多的就是`highlight.js`，这是一个针对代码语言进行高亮，美化的工具。
 
@@ -45,7 +45,7 @@ hljs.registerLanguage('javascript', javascript);
 
 第三次构建，又减了800K，总大小1.12M
 
-![](./img/second.png)
+![](../../img/second.png)
 
 很明显一个大大的`dist.js`刺激着我的眼睛。
 
@@ -66,6 +66,6 @@ config.resolve.alias['@ant-design/icons/lib/dist$']=path.resolve(__dirname, './s
 
 第四次构建，再次减少400K后，总大小为693K，这个结果是可以接受的。
 
-![](./img/final.png)
+![](../../img/final.png)
 
 这就是我的一次项目构建体积压缩全过程。

@@ -4,7 +4,7 @@
 
 一张导图：
 
-![](./img/reachRouter.png)
+![](../../img/reachRouter.png)
 
 几个亮点：
 

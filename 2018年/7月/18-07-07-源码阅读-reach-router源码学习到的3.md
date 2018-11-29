@@ -87,6 +87,6 @@ Promise.resolve().then(() => {
 Promise的任务会添加到当前任务队列的末尾，而setTimeout中的任务是放到下一个事件循环列表执行
 
 一张图理解：
-![](./img/eventloop%20and%20callbackqueue.png)
+![](../../img/eventloop%20and%20callbackqueue.png)
 
 简单来说，Promise就是异步，越快越好

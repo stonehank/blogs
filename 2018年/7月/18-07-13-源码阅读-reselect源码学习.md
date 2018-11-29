@@ -4,7 +4,7 @@
 
 导图：
 
-![](./img/reselect.png)
+![](../../img/reselect.png)
 
 ### defaultMemoize
 
