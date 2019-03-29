@@ -74,7 +74,7 @@ Output:
 
 代码：
 ```js
-function mergeArrs(arr1,arr2){
+function mergeArr(arr1,arr2){
   if(arr1.length===0)return arr2
   if(arr2.length===0)return arr1
   let l=0,r=0
@@ -128,7 +128,7 @@ var maxNumber = function(nums1, nums2, k) {
     let l=i,r=k-i
     if(nums1.length<l || nums2.length<r)continue
     // 通过算法1和算法2求出当前结果
-    let res=mergeArrs(maxInArr(nums1,l),maxInArr(nums2,r))
+    let res=mergeArr(maxInArr(nums1,l),maxInArr(nums2,r))
     // 保存与上一次结果对比的最大值
     if(!maxArr)maxArr=res
     else if(compareArr(res,maxArr)){
