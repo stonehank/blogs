@@ -1,6 +1,6 @@
 `single-spa`一个页面路由管理工具，当一个页面存在多个框架`React`, `Vue`, `Angular`等等时，单个框架路由已经不能适用，需要一个纯粹的`js`路由进行管理。
 
-我的项目结构：
+#### 项目结构：
 ```
 ├── index.js
 ├── react-blog
@@ -29,7 +29,7 @@
 
 对应每个前端框架已经有现成的插件可以使用，因此我们不需要太多需要做的，只需要将应用传递即可
 
-React:
+#### React
 ```js
 // react-blog/index.js(使用 single-spa-react)
 
@@ -70,7 +70,7 @@ function domElementGetter() {
 
 ```
 
-Vue
+#### Vue
 ```js
 // vue-diy-resume/index.js
 
