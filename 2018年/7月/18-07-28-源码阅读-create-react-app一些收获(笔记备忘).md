@@ -1,6 +1,6 @@
-## ./creat-react-app/createReactApp.js
+> ./creat-react-app/createReactApp.js
 
-* os.EOL
+##### os.EOL
 
     不同系统的行尾符号
     
@@ -10,14 +10,14 @@
     
     `\r\n` on Windows
 
-* process.cwd()
+##### process.cwd()
 
     返回当前node进程的目录
     
     > The process.cwd() method returns the current working directory of the Node.js process.
 
 
-* child_process.spawn
+##### child_process.spawn
 
     使用给定的 command 和 args 中的命令行参数来衍生一个新进程
 
@@ -35,7 +35,7 @@
     
     或者使用`cross-spawn`
 
-* semver
+##### semver
 
     进行版本号对比，官网例子备忘
     ```js
@@ -48,7 +48,7 @@
     semver.valid(semver.coerce('v2')) // '2.0.0'
     semver.valid(semver.coerce('42.6.7.9.3-alpha')) // '42.6.7'
     ```
-* path.delimiter
+##### path.delimiter
 
     对不同平台的路径进行分割成数组
     
@@ -56,7 +56,7 @@
     
     POSIX 上是 :(冒号)
     
-* 一个Boolean的使用方法：
+##### 一个Boolean的使用方法
 
     `process.env.NODE_PATH.split(path.delimiter).filter(Boolean)`
     
